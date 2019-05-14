@@ -22,7 +22,6 @@ const CACHE_NAME = 'static-cache-v3';
 const DATA_CACHE_NAME = 'data-cache-v4';
 // CODELAB: Add list of files to cache here.
 const FILES_TO_CACHE = [
-  '/pwa',
   'index.html',
   'about.html',
   'contact.html',
@@ -102,7 +101,7 @@ self.addEventListener('fetch', event => {
           return cachedResponse;
         }
 
-    
+
       });
     })
   );
