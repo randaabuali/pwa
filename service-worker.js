@@ -29,7 +29,24 @@ const FILES_TO_CACHE = [
   'favicon.ico',
   'scripts/main.js',
   'styles/main.css',
-
+  'img/about.jpg',
+  'img/contact.jpg',
+  'img/cover.jpg',
+  'img/material-portfolio-screenshot.png',
+  'img/person1.jpg',
+  'img/person2.jpg',
+  'img/portfolio-header.jpg',
+  'img/portfolio1.jpg',
+  'img/portfolio2.jpg',
+  'img/portfolio3.jpg',
+  'img/portfolio4.jpg',
+  'img/portfolio5.jpg',
+  'img/portfolio6.jpg',
+  'img/portfolio7.jpg',
+  'img/portfolio8.jpg',
+  'img/portfolio9.jpg',
+  'img/site-logo.png',
+  'img/site-logo.svg',
 ];
 
 self.addEventListener('install', (evt) => {
