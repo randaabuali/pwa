@@ -78,33 +78,32 @@ self.addEventListener('activate', (evt) => {
   self.clients.claim();
 });
 
-self.addEventListener('fetch', (evt) => {
-  // CODELAB: Add fetch event handler here.
-  if (evt.request.url.includes('/pwa')) {
-  console.log('[Service Worker] Fetch (data)', evt.request.url);
-  evt.respondWith(
-      caches.open(DATA_CACHE_NAME).then((cache) => {
-        return fetch(evt.request)
-            .then((response) => {
-              // If the response was good, clone it and store it in the cache.
-              if (response.status === 200) {
-                cache.put(evt.request.url, response.clone());
-              }
-              return response;
-            }).catch((err) => {
-              // Network request failed, try to get it from the cache.
-              return cache.match(evt.request);
-            });
-      }));
-  return;
-}
-  evt.respondWith(
-      fetch(evt.request)
-          .catch(() => {
-            return caches.open(CACHE_NAME)
-                .then((cache) => {
-                    return response || fetch(evt.request);
-                });
-          })
+self.addEventListener('fetch', event => {
+  if (!event.request.url.startsWith(self.location.origin) || event.request.method !== 'GET') {
+    // External request, or POST, ignore
+    return void event.respondWith(fetch(event.request));
+  }
+
+  event.respondWith(
+    // Always try to download from server first
+    fetch(event.request).then(response => {
+      // When a download is successful cache the result
+      caches.open(CACHE_NAME).then(cache => {
+        cache.put(event.request, response)
+      });
+      // And of course display it
+      return response.clone();
+    }).catch((_err) => {
+      // A failure probably means network access issues
+      // See if we have a cached version
+      return caches.match(event.request).then(cachedResponse => {
+        if (cachedResponse) {
+          // We did have a cached version, display it
+          return cachedResponse;
+        }
+
+    
+      });
+    })
   );
 });
