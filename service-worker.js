@@ -18,11 +18,37 @@
 'use strict';
 
 // CODELAB: Update cache names any time any of the cached files change.
-const CACHE_NAME = 'static-cache-v1';
+const CACHE_NAME = 'static-cache-v3';
+const DATA_CACHE_NAME = 'data-cache-v4';
 
 // CODELAB: Add list of files to cache here.
 const FILES_TO_CACHE = [
-  'offline.html',
+  '/pwa',
+  'index.html',
+  'about.html',
+  'contact.html',
+  'portfolio.html',
+  'favicon.ico',
+  '/pwa/scripts/main.js',
+  '/pwa/styles/main.css',
+  '/pwa/img/about.jpg',
+  '/pwa/img/contact.jpg',
+  '/pwa/img/cover.jpg',
+  '/pwa/img/material-portfolio-screenshot.jpg',
+  '/pwa/img/person1.jpg',
+  '/pwa/img/person2.jpg',
+  '/pwa/img/portfolio-header.jpg',
+  '/pwa/img/portfolio1.jpg',
+  '/pwa/img/portfolio2.jpg',
+  '/pwa/img/portfolio3.jpg',
+  '/pwa/img/portfolio4.jpg',
+  '/pwa/img/portfolio5.jpg',
+  '/pwa/img/portfolio6.jpg',
+  '/pwa/img/portfolio7.jpg',
+  '/pwa/img/portfolio8.jpg',
+  '/pwa/img/portfolio9.jpg',
+  '/pwa/img/site-logo.png',
+  '/pwa/img/site-logo.svg',
 ];
 
 self.addEventListener('install', (evt) => {
